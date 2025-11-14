@@ -33,3 +33,32 @@ void playGame() {
     int attempts_left = max_attempts;
     string guessed_letters = "";
     string nama1, nama2;
+
+// === Giliran Pemain 1 (Pencipta Kata) ===
+    // Modul 3 (Input & Output)
+    cout << "Masukkan nama pencipta kata: ";
+    cin >> nama1;
+
+    cout << "--- Giliran " << nama1 << " (Pencipta Kata) ---\n";
+    cout << "Masukkan KATA RAHASIA: ";
+    cin >> secret_word;
+
+    // Ubah ke huruf kapital
+    for (int i = 0; secret_word[i] != '\0'; ++i) {
+        secret_word[i] = toupper(secret_word[i]);
+    }
+
+    cout << "Berikan petunjuk: ";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, hint);
+
+    // Tunggu konfirmasi sebelum ganti pemain
+    cout << "\nTekan ENTER jika kamu sudah selesai dan Penebak siap menebak...";
+    cin.get();
+
+    // Bersihkan layar (Windows/Linux)
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
