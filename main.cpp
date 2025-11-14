@@ -62,3 +62,28 @@ void playGame() {
 #else
     system("clear");
 #endif
+
+    // Inisialisasi tampilan tebakan (pakai string tapi berdasarkan array)
+    string current_guess(strlen(secret_word), '_');
+
+    // === Giliran Pemain 2 (Penebak) ===
+    cout << "Masukkan nama penebak kata: ";
+    cin >> nama2;
+
+    cout << "--- Giliran " << naa2 << " (Penebak) ---\n";
+    cout << "Petunjuk dari " << nama1 << ": " << hint << endl;
+
+    // Modul 6 (Perulangan)
+    while (attempts_left > 0 && current_guess != secret_word) {
+        displayGameState(current_guess, attempts_left);
+        cout << "Huruf yang sudah ditebak: " << guessed_letters << endl;
+
+        char guess_char;
+        cout << "Tebak sebuah HURUF: ";
+
+        // Modul 5 (Seleksi Kondisi)
+        if (!(cin >> guess_char)) {
+            cout << "Input tidak valid! Harap masukkan satu huruf.\n";
+            clearInput();
+            continue;
+        }
