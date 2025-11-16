@@ -87,3 +87,39 @@ void playGame() {
             clearInput();
             continue;
         }
+guessed_letters += guess_char;
+
+        bool benar = false;
+        for (int i = 0; secret_word[i] != '\0'; ++i) {
+            if (secret_word[i] == guess_char) {
+                current_guess[i] = guess_char;
+                benar = true;
+            }
+        }
+
+        if (benar) {
+            cout << "Bagus! Huruf '" << guess_char << "' ada dalam kata!\n";
+        } else {
+            cout << "Maaf, huruf '" << guess_char << "' TIDAK ada dalam kata.\n";
+            attempts_left--;
+        }
+    }
+
+    // === Hasil Akhir ===
+    cout << "\n\n*\n";
+    if (current_guess == secret_word) {
+        cout << "Selamat " << nama2 << " kamu menang!!!\n";
+        cout << "Kata Rahasia: " << secret_word << endl;
+    } else {
+        cout << "Yahhh kamu gagal " << nama2 << " :(\n";
+        cout << "Kata Rahasia yang benar adalah: " << secret_word << endl;
+    }
+    cout << "*\n";
+}
+
+// Modul 1 (Fungsi Utama)
+// Modul 8 (Fungsi)
+int main() {
+    playGame();
+    return 0;
+}
